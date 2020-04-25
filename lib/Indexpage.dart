@@ -4,6 +4,10 @@ import 'package:flutter_components_demo/components/AlertDialog/AlertDialogdemo.d
 import 'package:flutter_components_demo/components/AnimateList/AnimateList.dart';
 import 'components/AnimationSwicher/AnimationSwicher.dart';
 import 'components/AspectRatio/AspectRatio.dart';
+import 'components/Card/Card.dart';
+import 'components/Checkbox/Checkbox.dart';
+import 'components/Container/Container.dart';
+import 'components/ProgressIndicator/ProgressIndicator.dart';
 
 class Indexpage extends StatefulWidget {
   @override
@@ -17,7 +21,7 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TabController(length: 5, vsync: this);
+    _controller = TabController(length: 9, vsync: this);
   }
 
   @override
@@ -51,6 +55,10 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
             Text('AnimateList', style: TextStyle(color: Colors.white)),
             Text('AnimationSwitcher', style: TextStyle(color: Colors.white)),
             Text('AspectRatio', style: TextStyle(color: Colors.white)),
+            Text('Card', style: TextStyle(color: Colors.white)),
+            Text('CheckboxDemo', style: TextStyle(color: Colors.white)),
+            Text('ProgressIndicatorDemo', style: TextStyle(color: Colors.white)),
+            Text('ContainerDemo', style: TextStyle(color: Colors.white)),
           ],
           isScrollable: true,
           labelColor: Theme.of(context).primaryColor,
@@ -73,6 +81,10 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
              AnimateListDemo(),
              AnimationSwitcherDemo(),
              AspectRatioDemo(),
+             CardDemo(),
+             CheckboxDemo(),
+             ProgressIndicatorDemo(),
+             ContainerDemo(),
            ],
           ),
           Container(

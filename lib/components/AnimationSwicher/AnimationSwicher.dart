@@ -38,6 +38,13 @@ class _AnimationSwitcherDemoState extends State<AnimationSwitcherDemo> {
         AnimatedSwitcher(
           duration: Duration(seconds: 2),
           child: _widget,
+          switchInCurve: Curves.easeIn,
+          transitionBuilder: (Widget child, Animation<double> value) {
+            return ScaleTransition(
+              scale: value,
+              child: child,
+            );
+          },
         ),
       ],
     );
