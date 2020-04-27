@@ -15,7 +15,12 @@ class Myapp extends StatelessWidget {
       theme: ThemeData(
         platform: TargetPlatform.iOS,
         primaryColor: Colors.purple,
-        primarySwatch: Colors.purple
+        primarySwatch: Colors.purple,
+        dividerTheme: DividerThemeData(
+          thickness: 1.0,
+          indent: 5.0,
+          endIndent: 5.0 
+        )
       ),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

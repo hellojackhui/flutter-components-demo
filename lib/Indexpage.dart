@@ -7,6 +7,7 @@ import 'components/AspectRatio/AspectRatio.dart';
 import 'components/Card/Card.dart';
 import 'components/Checkbox/Checkbox.dart';
 import 'components/Container/Container.dart';
+import 'components/DataTable/DataTable.dart';
 import 'components/ProgressIndicator/ProgressIndicator.dart';
 
 class Indexpage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TabController(length: 9, vsync: this);
+    _controller = TabController(length: 10, vsync: this);
   }
 
   @override
@@ -46,6 +47,37 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
         actions: <Widget>[
           IconButton(icon: Icon(Icons.ac_unit), onPressed: () {}),
           IconButton(icon: Icon(Icons.access_time), onPressed: () {}),
+          PopupMenuButton(
+            onSelected: (selected) {
+              if (selected == '语文') {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('${selected}'),
+                      content: Text('${selected}'),
+                    );
+                  }
+                );
+              }
+            },
+            itemBuilder: (context) {
+              return <PopupMenuEntry<String>> [
+                PopupMenuItem(
+                  child: Text('语文'),
+                  value: '语文',
+                ),
+                PopupMenuItem(
+                  child: Text('数学'),
+                  value: '数学',
+                ),
+                PopupMenuItem(
+                  child: Text('英语'),
+                  value: '英语',
+                ),
+              ];
+            },
+          ),
         ],
         bottom: TabBar(
           controller: _controller,
@@ -59,6 +91,7 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
             Text('CheckboxDemo', style: TextStyle(color: Colors.white)),
             Text('ProgressIndicatorDemo', style: TextStyle(color: Colors.white)),
             Text('ContainerDemo', style: TextStyle(color: Colors.white)),
+            Text('DataTableDemo', style: TextStyle(color: Colors.white)),
           ],
           isScrollable: true,
           labelColor: Theme.of(context).primaryColor,
@@ -69,7 +102,27 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
           ),
         )
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.album),
+              title: Text('11'),
+              subtitle: Text("this is jackhui's project"),
+            ),
+            ListTile(
+              leading: Icon(Icons.album),
+              title: Text('12'),
+              subtitle: Text("this is jackhui's project"),
+            ),
+            ListTile(
+              leading: Icon(Icons.album),
+              title: Text('13'),
+              subtitle: Text("this is jackhui's project"),
+            ),
+          ], 
+        )
+      ),
       body: IndexedStack(
         index: _currentIndex,
         children: <Widget>[
@@ -85,6 +138,7 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
              CheckboxDemo(),
              ProgressIndicatorDemo(),
              ContainerDemo(),
+             DataTableDemo(),
            ],
           ),
           Container(
