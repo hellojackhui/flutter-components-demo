@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_components_demo/components/AboutDialog/AboutDialogDemo.dart';
 import 'package:flutter_components_demo/components/AlertDialog/AlertDialogdemo.dart';
 import 'package:flutter_components_demo/components/AnimateList/AnimateList.dart';
+import 'package:flutter_components_demo/components/GridView/GridViewDemo.dart';
+import 'package:flutter_components_demo/components/GuestDetector/GuestDetectorDemo.dart';
+import 'package:flutter_components_demo/components/RefreshIndicator/RefreshIndicator.dart';
 import 'components/AnimationSwicher/AnimationSwicher.dart';
 import 'components/AspectRatio/AspectRatio.dart';
 import 'components/Buttons/Buttons.dart';
@@ -23,7 +26,7 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TabController(length: 11, vsync: this);
+    _controller = TabController(length: 14, vsync: this);
   }
 
   @override
@@ -94,7 +97,9 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
             Text('ContainerDemo', style: TextStyle(color: Colors.white)),
             Text('DataTableDemo', style: TextStyle(color: Colors.white)),
             Text('ButtonsDemo', style: TextStyle(color: Colors.white)),
-            
+            Text('GuestDetector', style: TextStyle(color: Colors.white)),
+            Text('GridView', style: TextStyle(color: Colors.white)),
+            Text('RefreshIndicatorDemo', style: TextStyle(color: Colors.white)),
           ],
           isScrollable: true,
           labelColor: Theme.of(context).primaryColor,
@@ -143,6 +148,9 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
              ContainerDemo(),
              DataTableDemo(),
              ButtonsDemo(),
+             GuestDetectorDemo(),
+             GridViewDemo(),
+             RefreshIndicatorDemo()
            ],
           ),
           Container(
