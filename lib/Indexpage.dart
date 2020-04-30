@@ -12,6 +12,7 @@ import 'components/Card/Card.dart';
 import 'components/Checkbox/Checkbox.dart';
 import 'components/Container/Container.dart';
 import 'components/DataTable/DataTable.dart';
+import 'components/Hero/Hero.dart';
 import 'components/ProgressIndicator/ProgressIndicator.dart';
 
 class Indexpage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TabController(length: 14, vsync: this);
+    _controller = TabController(length: 15, vsync: this);
   }
 
   @override
@@ -100,6 +101,8 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
             Text('GuestDetector', style: TextStyle(color: Colors.white)),
             Text('GridView', style: TextStyle(color: Colors.white)),
             Text('RefreshIndicatorDemo', style: TextStyle(color: Colors.white)),
+            Text('HeroDemo', style: TextStyle(color: Colors.white)),
+            
           ],
           isScrollable: true,
           labelColor: Theme.of(context).primaryColor,
@@ -150,7 +153,8 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
              ButtonsDemo(),
              GuestDetectorDemo(),
              GridViewDemo(),
-             RefreshIndicatorDemo()
+             RefreshIndicatorDemo(),
+             HeroDemo(),
            ],
           ),
           Container(
