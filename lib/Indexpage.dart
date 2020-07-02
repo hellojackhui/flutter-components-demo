@@ -1,40 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_components_demo/components/AboutDialog/AboutDialogDemo.dart';
-import 'package:flutter_components_demo/components/AlertDialog/AlertDialogdemo.dart';
-import 'package:flutter_components_demo/components/AnimateList/AnimateList.dart';
-import 'package:flutter_components_demo/components/GridView/GridViewDemo.dart';
-import 'package:flutter_components_demo/components/GuestDetector/GuestDetectorDemo.dart';
-import 'package:flutter_components_demo/components/RefreshIndicator/RefreshIndicator.dart';
-import 'components/AnimationSwicher/AnimationSwicher.dart';
-import 'components/AspectRatio/AspectRatio.dart';
-import 'components/Buttons/Buttons.dart';
-import 'components/Card/Card.dart';
-import 'components/Checkbox/Checkbox.dart';
-import 'components/Container/Container.dart';
-import 'components/DataTable/DataTable.dart';
-import 'components/Hero/Hero.dart';
-import 'components/ProgressIndicator/ProgressIndicator.dart';
+
+import 'package:flutter_components_demo/components/Components.dart';
+
+import 'featureComps/FeatureComps.dart';
 
 class Indexpage extends StatefulWidget {
   @override
   _IndexpageState createState() => _IndexpageState();
 }
 
-class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
+class _IndexpageState extends State<Indexpage> with WidgetsBindingObserver {
   int _currentIndex = 0;
-  TabController _controller;
+  
+  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TabController(length: 15, vsync: this);
+    WidgetsBinding.instance.addObserver(this);
+    
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    print('didChangeDependencies');
+  }
+  
+  @override
+  void didUpdateWidget(Indexpage oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    print('didUpdateWidget');
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+    print('deactivate');
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // TODO: implement didChangeAppLifecycleState
+    super.didChangeAppLifecycleState(state);
+    print("$state");
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _controller.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+    
   }
 
   void setIndex(int index) {
@@ -84,34 +104,6 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
             },
           ),
         ],
-        bottom: TabBar(
-          controller: _controller,
-          tabs: <Widget>[
-            Text('AboutDialog', style: TextStyle(color: Colors.white)),
-            Text('AlertDialog', style: TextStyle(color: Colors.white)),
-            Text('AnimateList', style: TextStyle(color: Colors.white)),
-            Text('AnimationSwitcher', style: TextStyle(color: Colors.white)),
-            Text('AspectRatio', style: TextStyle(color: Colors.white)),
-            Text('Card', style: TextStyle(color: Colors.white)),
-            Text('CheckboxDemo', style: TextStyle(color: Colors.white)),
-            Text('ProgressIndicatorDemo', style: TextStyle(color: Colors.white)),
-            Text('ContainerDemo', style: TextStyle(color: Colors.white)),
-            Text('DataTableDemo', style: TextStyle(color: Colors.white)),
-            Text('ButtonsDemo', style: TextStyle(color: Colors.white)),
-            Text('GuestDetector', style: TextStyle(color: Colors.white)),
-            Text('GridView', style: TextStyle(color: Colors.white)),
-            Text('RefreshIndicatorDemo', style: TextStyle(color: Colors.white)),
-            Text('HeroDemo', style: TextStyle(color: Colors.white)),
-            
-          ],
-          isScrollable: true,
-          labelColor: Theme.of(context).primaryColor,
-          labelPadding: EdgeInsets.all(15),
-          labelStyle: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        )
       ),
       drawer: Drawer(
         child: ListView(
@@ -137,26 +129,8 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
       body: IndexedStack(
         index: _currentIndex,
         children: <Widget>[
-          TabBarView(
-           controller: _controller,
-           children: <Widget>[
-             AboutDialogDemo(),
-             AlertDialogDemo(),
-             AnimateListDemo(),
-             AnimationSwitcherDemo(),
-             AspectRatioDemo(),
-             CardDemo(),
-             CheckboxDemo(),
-             ProgressIndicatorDemo(),
-             ContainerDemo(),
-             DataTableDemo(),
-             ButtonsDemo(),
-             GuestDetectorDemo(),
-             GridViewDemo(),
-             RefreshIndicatorDemo(),
-             HeroDemo(),
-           ],
-          ),
+          ComponentsDemo(),
+          FeatureComps(),
           Container(
             child: Center(
              child: Icon(Icons.camera, size: 32.0,), 
@@ -179,6 +153,10 @@ class _IndexpageState extends State<Indexpage> with TickerProviderStateMixin{
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
             title: Text('组件')
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            title: Text('复合组件')
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.toys),

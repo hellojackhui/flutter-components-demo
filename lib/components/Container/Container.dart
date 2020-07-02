@@ -36,7 +36,17 @@ class ContainerDemo extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             border: Border.all(color: Colors.red, width: 2.0),
             image: DecorationImage(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),fit: BoxFit.fill),
-          ))
+          )),
+          Container(
+            child: Center(
+              child: Text('jackhui', style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w700))
+            ),
+            padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 20.0),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(2.0)),
+            )
+          ),
         ],
       )
     );
