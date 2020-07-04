@@ -11,6 +11,7 @@ import 'package:flutter_components_demo/components/GridView/GridViewDemo.dart';
 import 'package:flutter_components_demo/components/GuestDetector/GuestDetectorDemo.dart';
 import 'package:flutter_components_demo/components/Hero/Hero.dart';
 import 'package:flutter_components_demo/components/ListView/ListViewDemo.dart';
+import 'package:flutter_components_demo/components/Listener/ListenerDemo.dart';
 import 'package:flutter_components_demo/components/PageView/PageView2Demo.dart';
 import 'package:flutter_components_demo/components/PageView/PageViewDemo.dart';
 import 'package:flutter_components_demo/components/ProgressIndicator/ProgressIndicator.dart';
@@ -50,6 +51,7 @@ class _ComponentsDemoState extends State<ComponentsDemo> with TickerProviderStat
     'DatePickerDemo',
     'ListViewDemo',
     'SliverDemo',
+    'ListenerDemo',
   ];
   @override
   void initState() {
@@ -112,6 +114,7 @@ class _ComponentsDemoState extends State<ComponentsDemo> with TickerProviderStat
               DatePickerDemo(defaultDateTime: DateTime.now()),
               ListViewDemo(),
               SliverDemo(),
+              ListenerDemo(),
             ],
           ),)
         ]
