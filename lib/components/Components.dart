@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components_demo/components/AnimationDemo/AnimationDemo.dart';
 import 'package:flutter_components_demo/components/AnimationSwicher/AnimationSwicher.dart';
 import 'package:flutter_components_demo/components/AspectRatio/AspectRatio.dart';
 import 'package:flutter_components_demo/components/Buttons/Buttons.dart';
@@ -52,6 +53,7 @@ class _ComponentsDemoState extends State<ComponentsDemo> with TickerProviderStat
     'ListViewDemo',
     'SliverDemo',
     'ListenerDemo',
+    'AnimationDemo',
   ];
   @override
   void initState() {
@@ -115,6 +117,7 @@ class _ComponentsDemoState extends State<ComponentsDemo> with TickerProviderStat
               ListViewDemo(),
               SliverDemo(),
               ListenerDemo(),
+              AnimationDemo(),
             ],
           ),)
         ]
