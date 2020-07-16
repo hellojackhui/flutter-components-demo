@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_components_demo/featureComps/NavigationDemo/Pages/PageThree.dart';
 import 'package:flutter_components_demo/featureComps/NavigationDemo/Pages/UnknownPage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'Indexpage.dart';
 
 void main() {
+  debugPaintSizeEnabled = true;
   return runApp(Myapp());
 }
 

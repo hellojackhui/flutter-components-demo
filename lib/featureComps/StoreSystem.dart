@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_components_demo/utils/SharePreference.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:path_provider/path_provider.dart';
 
 
 class StoreSystemDemo extends StatefulWidget {
@@ -17,6 +19,7 @@ class StoreSystemDemo extends StatefulWidget {
 class _StoreSystemDemoState extends State<StoreSystemDemo> {
   Dio dio;
   VersionData data;
+  MethodChannel channel = MethodChannel("sample.jackhui");
   String str = json.encode({
     "_id": "5effe779b7eeaf79695ba302",
     "result": true,
@@ -53,27 +56,80 @@ class _StoreSystemDemoState extends State<StoreSystemDemo> {
     print(res);
   }
 
+  Future<File> get _localfile async {
+    final directory = await getApplicationDocumentsDirectory();
+    var dirpath = directory.path;
+    return File('$dirpath/context.txt');
+  }
+
+  Future setVersionFile(String data) async {
+    File file = await _localfile;
+    return file.writeAsString(data);
+  }
+
+  Future<String> getVersionFile() async {
+    try {
+      File file = await _localfile;
+      String res = await file.readAsString();
+      print(res);
+    } catch(e) {
+      return "";
+    }
+  }
+
+  Future callMethodChannel() async {
+    int result;
+    try {
+      result = await channel.invokeMethod("appmarket");
+    } catch(e) {
+      result = -1;
+      print(e);
+    }
+    print('result: $result');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
             height: 300,
             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Expanded(flex: 1, child: Center(child: FlatButton(onPressed: getVersionInfo, child: Text('获取信息'),))),
+              Expanded(flex: 1, child: Center(child: RaisedButton(onPressed: getVersionInfo, child: Text('获取信息'),))),
               Expanded(flex: 2, child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(flex: 1, child: FlatButton(onPressed: () {
+                  Expanded(flex: 1, child: RaisedButton(onPressed: () {
                     setVersionsp('loadurl', data.loadurl);
                   }, child: Text('存储到sharepreference'))),
-                  Expanded(flex: 1, child: FlatButton(onPressed: () {
+                  Expanded(flex: 1, child: RaisedButton(onPressed: () {
+                    getVersionFile();
+                  }, child: Text('获取sharepreference数据', overflow: TextOverflow.ellipsis, maxLines: 2,))),
+                ]
+              )),
+              Expanded(flex: 2, child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(flex: 1, child: RaisedButton(onPressed: () {
+                    setVersionFile(data.loadurl);
+                  }, child: Text('存储到文件中'))),
+                  Expanded(flex: 1, child: RaisedButton(onPressed: () {
                     getVersionsp('loadurl');
-                  }, child: Text('获取sharepreference数据'))),
+                  }, child: Text('从文件获取数据', overflow: TextOverflow.ellipsis, maxLines: 2,))),
+                ]
+              )),
+              Expanded(flex: 2, child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(flex: 1, child: RaisedButton(onPressed: () {
+                    callMethodChannel();
+                  }, child: Text('MethodChannel'))),
                 ]
               )),
               // Expanded(flex: 2, child: null)

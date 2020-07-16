@@ -4,6 +4,7 @@ import 'package:flutter_components_demo/components/Components.dart';
 import 'package:flutter_components_demo/featureComps/InheritComponentDemo.dart';
 import 'package:flutter_components_demo/featureComps/NavigationDemo/NavigatorDemo.dart';
 import 'package:flutter_components_demo/featureComps/NetworkDemo.dart';
+import 'package:flutter_components_demo/featureComps/SampleDemo.dart';
 import 'package:flutter_components_demo/featureComps/StoreSystem.dart';
 
 import 'featureComps/FeatureComps.dart';
@@ -134,7 +135,7 @@ class _IndexpageState extends State<Indexpage> with WidgetsBindingObserver {
         index: _currentIndex,
         children: <Widget>[
           ComponentsDemo(),
-          StoreSystemDemo(),
+          SampleDemo(defaultTargetPlatform: TargetPlatform.android,),
           Container(
             child: Center(
              child: Icon(Icons.camera, size: 32.0,), 

@@ -6,6 +6,7 @@ import 'package:flutter_components_demo/components/Buttons/Buttons.dart';
 import 'package:flutter_components_demo/components/Card/Card.dart';
 import 'package:flutter_components_demo/components/Checkbox/Checkbox.dart';
 import 'package:flutter_components_demo/components/Container/Container.dart';
+import 'package:flutter_components_demo/components/CustomerPaint/CustomerPaintDemo.dart';
 import 'package:flutter_components_demo/components/DataTable/DataTable.dart';
 import 'package:flutter_components_demo/components/DatePickerDemo/DatePickerDemo.dart';
 import 'package:flutter_components_demo/components/GridView/GridViewDemo.dart';
@@ -54,6 +55,7 @@ class _ComponentsDemoState extends State<ComponentsDemo> with TickerProviderStat
     'SliverDemo',
     'ListenerDemo',
     'AnimationDemo',
+    'CustomerPaintDemo',
   ];
   @override
   void initState() {
@@ -118,6 +120,7 @@ class _ComponentsDemoState extends State<ComponentsDemo> with TickerProviderStat
               SliverDemo(),
               ListenerDemo(),
               AnimationDemo(),
+              CustomerPaintDemo(),
             ],
           ),)
         ]
